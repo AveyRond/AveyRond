@@ -74,4 +74,18 @@ class AveyrondController extends AbstractController
             'controller_name' => 'AveyrondController',
         ]);
     }
+
+    /**
+     * @Route("/{id}", name="show")
+     */
+    public function show($id): Response
+    {   
+        $repo = $this->getDoctrine()->getRepository(Article::class);
+        
+        $articles = $repo->find($id);
+
+        return $this->render('aveyrond/show.html.twig', [
+            'article' => $articles
+        ]);
+    }
 }

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualités{% endblock %}
+
+{% block body %}
+
+    <article>
+        <h1>{{ article.title }}</h1>
+        <div>Ecrit le {{ article.createdAt | date('d/m/Y') }} par {{ article.author }} dans la catégorie {{ article.category.categoryType }}</div>
+        <img src={{ article.image }}>
+        <div class="content">{{ article.content | raw }}</div>
+    </article> 
+
+{% endblock %}

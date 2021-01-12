@@ -2,48 +2,67 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * Article
+ *
+ * @ORM\Table(name="article", indexes={@ORM\Index(name="IDX_23A0E6612469DE2", columns={"category_id"})})
+ * @ORM\Entity
  */
 class Article
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=false)
      */
     private $title;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="content", type="text", length=0, nullable=false)
      */
     private $content;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="author", type="string", length=255, nullable=false)
      */
     private $author;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=false)
      */
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity=CategoryArticle::class, inversedBy="articles")
+     * @var \CategoryArticle
+     *
+     * @ORM\ManyToOne(targetEntity="CategoryArticle")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * })
      */
     private $category;
 
@@ -123,4 +142,6 @@ class Article
 
         return $this;
     }
+
+
 }
