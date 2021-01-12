@@ -27,4 +27,44 @@ class AveyrondController extends AbstractController
             'controller_name' => 'AveyrondController',
         ]);
     }
+
+    /**
+     * @Route("/interviews", name="interviews")
+     */
+    public function interviews(): Response
+    {
+        return $this->render('aveyrond/interviews.html.twig', [
+            'controller_name' => 'AveyrondController',
+        ]);
+    }
+
+    /**
+     * @Route("/resultats", name="resultats")
+     */
+    public function resultats(): Response
+    {
+        return $this->render('aveyrond/resultats.html.twig', [
+            'controller_name' => 'AveyrondController',
+        ]);
+    }
+
+    /**
+     * @Route("/buteurs", name="buteurs")
+     */
+    public function classButeurs(): Response
+    {
+        return $this->render('aveyrond/buteurs.html.twig', [
+            'controller_name' => 'AveyrondController',
+        ]);
+    }
+
+    /**
+     * @Route("/mercato", name="mercato")
+     */
+    public function mercato(): Response
+    {
+        return $this->render('aveyrond/mercato.html.twig', [
+            'controller_name' => 'AveyrondController',
+        ]);
+    }
 }
