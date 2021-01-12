@@ -1,20 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AveyrondController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<section class="articles">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/AveyRond/AveyRond/src/Controller/AveyrondController.php'|file_link(0) }}">src/Controller/AveyrondController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/AveyRond/AveyRond/templates/aveyrond/index.html.twig'|file_link(0) }}">templates/aveyrond/index.html.twig</a></code></li>
-    </ul>
-</div>
+    {% for article in articles %}
+        <article>
+            <h1>{{ article.title }}</h1>
+            <div class="content">{{ article.content }}</div>
+            <div>Ecrit le {{ article.createdAt | date('d/m/Y') }} par {{ article.author }}</div>
+            <img src={{ article.image }}>
+            <div>{{ article.category.categoryType }}</div>
+        </article> 
+    {% endfor %}
+
+</section>
+
 {% endblock %}

@@ -5,16 +5,23 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Article;
+use App\Entity\CategoryArticle;
 
 class AveyrondController extends AbstractController
 {
     /**
-     * @Route("/aveyrond", name="aveyrond")
+     * @Route("/", name="accueil")
      */
     public function index(): Response
     {
+        $repo = $this->getDoctrine()->getRepository(Article::class);
+        
+        $articles = $repo->findAll();
+
         return $this->render('aveyrond/index.html.twig', [
             'controller_name' => 'AveyrondController',
+            'articles' => $articles
         ]);
     }
 

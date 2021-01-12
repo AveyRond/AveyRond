@@ -1,8 +1,22 @@
 {% extends 'base.html.twig' %}
 
-
-
 {% block title %}Actualités{% endblock %}
 
 {% block body %}
+
+<section class="articles">
+
+    {% for article in articles %}
+        <article>
+            <h1>{{ article.title }}</h1>
+            <div class="content">{{ article.content }}</div>
+            <div>{{ article.author }}</div>
+            <div>{{ article.createdAt }}</div>
+            <div>{{ article.image}}</div>
+            <div>{{ article.category }}</div>
+        </article> 
+    {% endfor %}
+
+</section>
+
 {% endblock %}
