@@ -12,11 +12,10 @@
             <div>Ecrit le {{ article.createdAt | date('d/m/Y') }} par {{ article.author }} dans la catégorie {{ article.category.categoryType }}</div>
             <img src={{ article.image }}>
             <div class="content">{{ article.content | raw }}</div>
-            <a href="{{ path('show', {'id': article.id}) }}" class="btn btn-outline-primary">Lire la suite</a>
+            <a href="{{ path('show_article', {'id': article.id}) }}" class="btn btn-outline-primary">Lire la suite</a>
             <hr>
         </article> 
     {% endfor %}
 
 </section>
-
 {% endblock %}
