@@ -17,4 +17,14 @@ class AveyrondController extends AbstractController
             'controller_name' => 'AveyrondController',
         ]);
     }
+
+    /**
+     * @Route("/actualites", name="actu")
+     */
+    public function actu(): Response
+    {
+        return $this->render('aveyrond/actualites.html.twig', [
+            'controller_name' => 'AveyrondController',
+        ]);
+    }
 }
