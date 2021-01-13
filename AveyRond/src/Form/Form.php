@@ -7,12 +7,10 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use App\Entity\Article;
-use Doctrine\ORM\EntityRepository;
+use App\Entity\CategoryArticle;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class Form extends AbstractType
 {
@@ -24,15 +22,11 @@ class Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('category', ChoiceType::class, [
+            ->add('category', EntityType::class, [
                 'label' => 'Catégorie',
-                'choices' => [
-                    'Actualité' => 1,
-                    'Interview' => 2,
-                    'Résultat' => 3,
-                    'Classement Buteur' => 4,
-                    'Mercato' => 5,
-                ], 'attr' => array('class' => 'form-control')
+                'class' => CategoryArticle::class,
+                'choice_label' => 'categoryType',
+                'attr' => array('class' => 'form-control')
             ])
 
             ->add('title', TextType::class, array('label'=>'Titre', 'attr' => array(
