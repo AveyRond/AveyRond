@@ -17,7 +17,7 @@ class AveyrondController extends AbstractController
     public function index(): Response
     {
         $repo = $this->getDoctrine()->getRepository(Article::class);
-        
+
         $articles = $repo->findAll();
 
         return $this->render('aveyrond/index.html.twig', [
@@ -80,27 +80,27 @@ class AveyrondController extends AbstractController
      * @Route("article/{id}", name="show_article")
      */
     public function show($id): Response
-    {   
+    {
         $repo = $this->getDoctrine()->getRepository(Article::class);
-        
+
         $articles = $repo->find($id);
- 
+
         return $this->render('aveyrond/show.html.twig', [
             'article' => $articles
         ]);
     }
-    
-     /**       
+
+    /**       
      * @Route("/formulaire", name="formulaire")
      */
     public function form(Request $request)
     {
         $article = new Article();
-        $form=$this->createForm(Form::class, $article, array());
-        
+        $form = $this->createForm(Form::class, $article, array());
+
         $form->handleRequest($request);
-        
-        if($form->isSubmitted() and $form->isValid()) {
+
+        if ($form->isSubmitted() and $form->isValid()) {
             $article->setCategory($form['category']->getData());
             $article->setTitle($form['title']->getData());
             $article->setContent($form['content']->getData());
@@ -108,7 +108,7 @@ class AveyrondController extends AbstractController
             $article->setCreatedAt(new \DateTime());
             $article->setImage($form['image']->getData());
 
-            $em=$this->getDoctrine()->getManager();
+            $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();
             $this->addFlash(
@@ -124,5 +124,4 @@ class AveyrondController extends AbstractController
             'controller_name' => 'AveyrondController',
         ]);
     }
-    
 }

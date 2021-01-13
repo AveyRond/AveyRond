@@ -14,8 +14,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class Form extends AbstractType
 {
-	
-	/**
+
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -29,35 +29,34 @@ class Form extends AbstractType
                 'attr' => array('class' => 'form-control')
             ])
 
-            ->add('title', TextType::class, array('label'=>'Titre', 'attr' => array(
+            ->add('title', TextType::class, array('label' => 'Titre', 'attr' => array(
                 'class' => 'form-control',
                 'title' => 'Titre',
             )))
 
             ->add('content', TextareaType::class, [
                 'label' => 'Contenu',
-				'attr' => ['class' => 'form-control',],
+                'attr' => ['class' => 'form-control',],
             ])
-            
-            ->add('author', TextType::class, array('label'=>'Auteur', 'attr' => array(
+
+            ->add('author', TextType::class, array('label' => 'Auteur', 'attr' => array(
                 'class' => 'form-control',
                 'title' => 'Auteur',
             )))
 
-            ->add('image', UrlType::class,[
-               'label' => "Mettez l'URL de l'image",
-               'attr' => array('class' => 'form-control')
+            ->add('image', UrlType::class, [
+                'label' => "Mettez l'URL de l'image",
+                'attr' => array('class' => 'form-control')
             ])
-			->add('save', SubmitType::class, array(
-				'label' => 'Enregistrer',
-				'attr' => array(
-					'class' => 'btn btn-primary btn-margin',
-					'title' => 'Enregistrer'
-				)
-			));
-				
+            ->add('save', SubmitType::class, array(
+                'label' => 'Enregistrer',
+                'attr' => array(
+                    'class' => 'btn btn-primary btn-margin',
+                    'title' => 'Enregistrer'
+                )
+            ));
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
@@ -65,7 +64,7 @@ class Form extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'App\Entity\Article',
-			'route'=>null
+            'route' => null
         ));
     }
 }
