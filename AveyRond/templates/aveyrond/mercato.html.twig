@@ -5,4 +5,23 @@
 {% block title %}Actualités{% endblock %}
 
 {% block body %}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ path('accueil') }}">Accueil</a></li>
+    <li class="breadcrumb-item active">Mercato</li>
+</ol>
+
+<main>
+{% for articlesMerca in articlesMerca %}
+    <article>
+        <img src={{ articlesMerca.image }}>
+        <div>
+            <h1>{{ articlesMerca.title }}</h1>
+            <p class="content">{{ articlesMerca.content | raw }}</p>
+            <div>Ecrit le {{ articlesMerca.createdAt | date('d/m/Y') }} par {{ articlesMerca.author }} dans la catégorie {{ articlesMerca.category.categoryType }}</div>
+        </div>
+    </article>
+    {% endfor %}
+<main>
+
 {% endblock %}

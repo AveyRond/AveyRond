@@ -4,5 +4,22 @@
 
 {% block body %}
 
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ path('accueil') }}">Accueil</a></li>
+    <li class="breadcrumb-item active">Actualités</li>
+</ol>
+
+<main>
+    {% for articlesActu in articlesActu %}
+    <article>
+        <img src={{ articlesActu.image }}>
+        <div>
+            <h1>{{ articlesActu.title }}</h1>
+            <p class="content">{{ articlesActu.content | raw }}</p>
+            <div>Ecrit le {{ articlesActu.createdAt | date('d/m/Y') }} par {{ articlesActu.author }} dans la catégorie {{ articlesActu.category.categoryType }}</div>
+        </div>
+    </article>
+    {% endfor %}
+<main>
 
 {% endblock %}

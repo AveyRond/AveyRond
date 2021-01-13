@@ -1,8 +1,26 @@
 {% extends 'base.html.twig' %}
 
 
-
-{% block title %}Actualités{% endblock %}
+{% block title %}Interviews{% endblock %}
 
 {% block body %}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ path('accueil') }}">Accueil</a></li>
+    <li class="breadcrumb-item active">Interviews</li>
+</ol>
+
+<main>
+{% for articlesInter in articlesInter %}
+    <article>
+        <img src={{ articlesInter.image }}>
+        <div>
+            <h1>{{ articlesInter.title }}</h1>
+            <p class="content">{{ articlesInter.content | raw }}</p>
+            <div>Ecrit le {{ articlesInter.createdAt | date('d/m/Y') }} par {{ articlesInter.author }} dans la catégorie {{ articlesInter.category.categoryType }}</div>
+        </div>
+    </article>
+    {% endfor %}
+<main>
+
 {% endblock %}

@@ -3,12 +3,14 @@
 {% block title %}Actualités{% endblock %}
 
 {% block body %}
-
+<main>
     <article>
-        <h1>{{ article.title }}</h1>
-        <div>Ecrit le {{ article.createdAt | date('d/m/Y') }} par {{ article.author }} dans la catégorie {{ article.category.categoryType }}</div>
         <img src={{ article.image }}>
-        <div class="content">{{ article.content | raw }}</div>
+        <div>
+            <h1>{{ article.title }}</h1>
+            <p class="content">{{ article.content | raw }}</p>
+            <div>Ecrit le {{ article.createdAt | date('d/m/Y') }} par {{ article.author }} dans la catégorie {{ article.category.categoryType }}</div>
+        </div>
     </article> 
-
+<main>
 {% endblock %}

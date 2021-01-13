@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
+use App\Entity\CategoryArticle;
 use App\Form\Form;
 
 class AveyrondController extends AbstractController
@@ -31,8 +32,10 @@ class AveyrondController extends AbstractController
      */
     public function actu(): Response
     {
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+        $articleActu = $repository->findBy(array('category' => 1));
         return $this->render('aveyrond/actualites.html.twig', [
-            'controller_name' => 'AveyrondController',
+            'articlesActu' => $articleActu
         ]);
     }
 
@@ -41,8 +44,10 @@ class AveyrondController extends AbstractController
      */
     public function interviews(): Response
     {
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+        $articleInter = $repository->findBy(array('category' => 2));
         return $this->render('aveyrond/interviews.html.twig', [
-            'controller_name' => 'AveyrondController',
+            'articlesInter' => $articleInter
         ]);
     }
 
@@ -51,8 +56,10 @@ class AveyrondController extends AbstractController
      */
     public function resultats(): Response
     {
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+        $articleResult = $repository->findBy(array('category' => 3));
         return $this->render('aveyrond/resultats.html.twig', [
-            'controller_name' => 'AveyrondController',
+            'articlesResult' => $articleResult
         ]);
     }
 
@@ -61,8 +68,10 @@ class AveyrondController extends AbstractController
      */
     public function classButeurs(): Response
     {
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+        $articleClassB = $repository->findBy(array('category' => 4));
         return $this->render('aveyrond/buteurs.html.twig', [
-            'controller_name' => 'AveyrondController',
+            'articlesClassB' => $articleClassB
         ]);
     }
 
@@ -71,8 +80,10 @@ class AveyrondController extends AbstractController
      */
     public function mercato(): Response
     {
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+        $articleMerca = $repository->findBy(array('category' => 5));
         return $this->render('aveyrond/mercato.html.twig', [
-            'controller_name' => 'AveyrondController',
+            'articlesMerca' => $articleMerca
         ]);
     }
 
