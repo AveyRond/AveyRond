@@ -1,3 +1,6 @@
+.navbar-nav {
+  align-items: center;
+}
 #form > div {
   margin-top: 2%;
 }
@@ -13,24 +16,119 @@ article {
   transition: 1s;
 }
 article:hover {
-    border-color: #737170;
+  border-color: #737170;
 }
-article > img {
-  width: 100%;
-  height: 100%;
+article > div > img {
+  max-width: 100%;
+  height: auto;
 }
-article > div:nth-of-type(1) {
+article > div:nth-of-type(2) {
   margin-left: 5%;
 }
-article>div>a {
-    margin-top: 2%;
+article > div > a {
+  margin-top: 2%;
 }
-article>div>h1 {
-    margin-top: 2%;
+article > div > h1 {
+  margin-top: 2%;
 }
 .content {
-    font-size: 15pt;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    vertical-align: middle;
+  font-size: 15pt;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+#deconnexion {
+  padding: 1%;
+  color: white;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: 1s;
+}
+#deconnexion:hover {
+  border-color: white;
+  background-color: white;
+  color: black;
+}
+.login {
+  margin: 2% 20% 0 20%;
+}
+.login > input:nth-of-type(1) {
+  margin-bottom: 2%;
+}
+.login > .btn-primary {
+  padding: 1.2%;
+  margin-top: 2%;
+}
+#inscription {
+  margin: 2% 20% 0 20%;
+}
+#inscription > form > div > input {
+  margin-bottom: 2%;
+}
+#registration_form_agreeTerms {
+  margin-left: 2%;
+}
+@media (max-width: 1430px) {
+  .nav-item {
+    margin-right: 0;
+  }
+  article > div:nth-of-type(2)> h1 {
+    font-size: 1.5rem;
+  }
+  article > div:nth-of-type(2)> p {
+    font-size: 12pt;
+  }
+  article > div:nth-of-type(2)> a {
+    padding: 1.5%;
+  }
+}
+@media (max-width: 1310px) {
+  main {
+    margin: 0 5% 0 5%;
+  }
+}
+@media (max-width: 1170px) {
+  .navbar {
+    font-size: 8pt;
+  }
+  #deconnexion {
+    font-size: 8pt;
+  }
+  .navbar-brand {
+    width: 18%;
+  }
+  .navbar-brand>img {
+    width: 100%;
+  }
+}
+@media (max-width: 992px) {
+  .navbar-nav {
+    align-items: flex-start;
+  }
+  #deconnexion {
+    padding: 0;
+    border: none;
+  }
+  .navbar {
+    font-size: .765625rem;
+  }
+  #deconnexion {
+    font-size: .765625rem;
+  }
+  .navbar-brand {
+    width: unset;
+  }
+  .navbar-brand>img {
+    width: unset;
+  }
+  .nav-item {
+    margin-right: 2rem;
+  }
+  .nav-item:last-child {
+    margin-bottom: 1.5%;
+  }
+  #deconnexion:hover {
+    background-color: unset;
+    color: white;
+  }
 }

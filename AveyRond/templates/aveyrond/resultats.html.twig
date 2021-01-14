@@ -14,11 +14,14 @@
 <main>
 {% for articlesResult in articlesResult %}
     <article>
-        <img src={{ articlesResult.image }}>
+        <div>
+            <img src={{ articlesResult.image }}>
+        </div>
         <div>
             <h1>{{ articlesResult.title }}</h1>
             <p class="content">{{ articlesResult.content | raw }}</p>
             <div>Ecrit le {{ articlesResult.createdAt | date('d/m/Y') }} par {{ articlesResult.author }} dans la catégorie {{ articlesResult.category.categoryType }}</div>
+            <hr>
         </div>
     </article>
     {% endfor %}

@@ -12,11 +12,14 @@
 <main>
     {% for articlesActu in articlesActu %}
     <article>
-        <img src={{ articlesActu.image }}>
+        <div>
+            <img src={{ articlesActu.image }}>
+        </div>
         <div>
             <h1>{{ articlesActu.title }}</h1>
             <p class="content">{{ articlesActu.content | raw }}</p>
             <div>Ecrit le {{ articlesActu.createdAt | date('d/m/Y') }} par {{ articlesActu.author }} dans la catégorie {{ articlesActu.category.categoryType }}</div>
+            <hr>
         </div>
     </article>
     {% endfor %}

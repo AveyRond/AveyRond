@@ -88,6 +88,15 @@ class AveyrondController extends AbstractController
     }
 
     /**
+     * @Route("/club", name="club")
+     */
+    public function club(): Response
+    {
+        return $this->render('aveyrond/club.html.twig', [
+        ]);
+    }
+
+    /**
      * @Route("article/{id}", name="show_article")
      */
     public function show($id): Response

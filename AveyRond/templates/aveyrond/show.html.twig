@@ -5,11 +5,14 @@
 {% block body %}
 <main>
     <article>
-        <img src={{ article.image }}>
+        <div>
+            <img src={{ article.image }}>
+        </div>
         <div>
             <h1>{{ article.title }}</h1>
             <p class="content">{{ article.content | raw }}</p>
             <div>Ecrit le {{ article.createdAt | date('d/m/Y') }} par {{ article.author }} dans la catégorie {{ article.category.categoryType }}</div>
+            <hr>
         </div>
     </article> 
 <main>

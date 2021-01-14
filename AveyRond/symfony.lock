@@ -93,6 +93,9 @@
     "doctrine/sql-formatter": {
         "version": "1.1.1"
     },
+    "egulias/email-validator": {
+        "version": "2.1.25"
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.2"
     },
@@ -131,6 +134,9 @@
         "files": [
             "./config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "swiftmailer/swiftmailer": {
+        "version": "v6.2.5"
     },
     "symfony/apache-pack": {
         "version": "1.0",
@@ -263,6 +269,9 @@
     "symfony/polyfill-intl-icu": {
         "version": "v1.22.0"
     },
+    "symfony/polyfill-intl-idn": {
+        "version": "v1.22.0"
+    },
     "symfony/polyfill-intl-normalizer": {
         "version": "v1.22.0"
     },
@@ -356,6 +365,19 @@
     },
     "symfony/twig-pack": {
         "version": "v1.0.1"
+    },
+    "symfony/validator": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "d902da3e4952f18d3bf05aab29512eb61cabd869"
+        },
+        "files": [
+            "./config/packages/test/validator.yaml",
+            "./config/packages/validator.yaml"
+        ]
     },
     "symfony/var-dumper": {
         "version": "v5.2.1"
