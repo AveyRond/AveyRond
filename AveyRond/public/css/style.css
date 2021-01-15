@@ -72,13 +72,13 @@ article > div > h1 {
   .nav-item {
     margin-right: 0;
   }
-  article > div:nth-of-type(1)> h1 {
+  article > div:nth-of-type(1) > h1 {
     font-size: 1.5rem;
   }
-  article > div:nth-of-type(1)> p {
+  article > div:nth-of-type(1) > p {
     font-size: 12pt;
   }
-  article > div:nth-of-type(1)> a {
+  article > div:nth-of-type(1) > a {
     padding: 1.5%;
   }
 }
@@ -97,7 +97,7 @@ article > div > h1 {
   .navbar-brand {
     width: 18%;
   }
-  .navbar-brand>img {
+  .navbar-brand > img {
     width: 100%;
   }
 }
@@ -110,15 +110,15 @@ article > div > h1 {
     border: none;
   }
   .navbar {
-    font-size: .765625rem;
+    font-size: 0.765625rem;
   }
   #deconnexion {
-    font-size: .765625rem;
+    font-size: 0.765625rem;
   }
   .navbar-brand {
     width: unset;
   }
-  .navbar-brand>img {
+  .navbar-brand > img {
     width: unset;
   }
   .nav-item {
