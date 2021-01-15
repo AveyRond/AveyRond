@@ -5,14 +5,11 @@
 {% block body %}
 
 <main>
-
     <section class="articles">
 
         {% for article in articles %}
             <article>
-                <div>
-                    <img src={{ article.image }}>
-                </div>
+                <img src={{ article.image }}>
                 <div>
                     <h1>{{ article.title }}</h1>
                     <p class="content">{{ article.content | raw }}</p>

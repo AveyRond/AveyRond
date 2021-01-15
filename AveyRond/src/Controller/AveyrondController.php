@@ -7,8 +7,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
+use App\Entity\Matchs;
 use App\Entity\CategoryArticle;
 use App\Form\Form;
+use App\Form\MatchFormType;
 
 class AveyrondController extends AbstractController
 {
@@ -92,7 +94,13 @@ class AveyrondController extends AbstractController
      */
     public function club(): Response
     {
+        $repoMatch = $this->getDoctrine()->getRepository(Matchs::class);
+
+        $matchs = $repoMatch->findAll();
+
         return $this->render('aveyrond/club.html.twig', [
+            'controller_name' => 'AveyrondController',
+            'match' => $matchs
         ]);
     }
 
@@ -140,6 +148,38 @@ class AveyrondController extends AbstractController
         }
 
         return $this->render('aveyrond/formulaire.html.twig', [
+            'form' => $form->createView(),
+            'controller_name' => 'AveyrondController',
+        ]);
+    }
+
+     /**       
+     * @Route("/matchs", name="matchs")
+     */
+    public function matchs(Request $request)
+    {
+        $match = new Matchs();
+        $form = $this->createForm(MatchFormType::class, $match, array());
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() and $form->isValid()) {
+            $match->setEquipe($form['Equipe']->getData());
+            $match->setAdversaire($form['Adversaire']->getData());
+            $match->setDateMatch($form['DateMatch']->getData());
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($match);
+            $em->flush();
+            $this->addFlash(
+                'notice',
+                'Ajout du match validé',
+            );
+
+            return $this->redirectToRoute('club');
+        }
+
+        return $this->render('aveyrond/matchs.html.twig', [
             'form' => $form->createView(),
             'controller_name' => 'AveyrondController',
         ]);

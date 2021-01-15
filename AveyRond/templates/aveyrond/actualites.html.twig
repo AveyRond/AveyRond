@@ -12,9 +12,7 @@
 <main>
     {% for articlesActu in articlesActu %}
     <article>
-        <div>
-            <img src={{ articlesActu.image }}>
-        </div>
+        <img src={{ articlesActu.image }}>
         <div>
             <h1>{{ articlesActu.title }}</h1>
             <p class="content">{{ articlesActu.content | raw }}</p>

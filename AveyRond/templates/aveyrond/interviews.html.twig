@@ -13,9 +13,7 @@
 <main>
 {% for articlesInter in articlesInter %}
     <article>
-        <div>
-            <img src={{ articlesInter.image }}>
-        </div>
+        <img src={{ articlesInter.image }}>
         <div>
             <h1>{{ articlesInter.title }}</h1>
             <p class="content">{{ articlesInter.content | raw }}</p>

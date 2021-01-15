@@ -14,9 +14,7 @@
 <main>
 {% for articlesClassB in articlesClassB %}
     <article>
-        <div>
-            <img src={{ articlesClassB.image }}>
-        </div>
+        <img src={{ articlesClassB.image }}>
         <div>
             <h1>{{ articlesClassB.title }}</h1>
             <p class="content">{{ articlesClassB.content | raw }}</p> 

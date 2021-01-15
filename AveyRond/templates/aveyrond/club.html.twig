@@ -9,4 +9,16 @@
     <li class="breadcrumb-item active">Accès Club</li>
 </ol>
 
+<button class="btn btn-lg btn-primary" href="#">Ajouter vos matchs</button>
+
+ {% for match in matchs %}
+    <article>
+        <div>
+            <h1>{{ match.Equipe }} VS {{ match.Adversaire }}</h1>
+            <p>{{ match.DateMatch }}</p>
+            <hr>
+        </div>
+    </article> 
+{% endfor %}
+
 {% endblock %}

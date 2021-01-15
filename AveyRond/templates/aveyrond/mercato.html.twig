@@ -14,9 +14,7 @@
 <main>
 {% for articlesMerca in articlesMerca %}
     <article>
-        <div>
-            <img src={{ articlesMerca.image }}>
-        </div>
+        <img src={{ articlesMerca.image }}>
         <div>
             <h1>{{ articlesMerca.title }}</h1>
             <p class="content">{{ articlesMerca.content | raw }}</p>
