@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
 use App\Entity\Matchs;
+use App\Entity\User;
 use App\Entity\CategoryArticle;
 use App\Form\Form;
 use App\Form\MatchFormType;
@@ -22,10 +23,14 @@ class AveyrondController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(Article::class);
 
         $articles = $repo->findAll();
+        $repo = $this->getDoctrine()->getRepository(Matchs::class);
+
+        $matchs = $repo->findAll();
 
         return $this->render('aveyrond/index.html.twig', [
             'controller_name' => 'AveyrondController',
-            'articles' => $articles
+            'articles' => $articles,
+            'matchs' => $matchs,
         ]);
     }
 
@@ -94,9 +99,10 @@ class AveyrondController extends AbstractController
      */
     public function club(): Response
     {
+        $user = $this->getUser();
         $repoMatch = $this->getDoctrine()->getRepository(Matchs::class);
 
-        $matchs = $repoMatch->findAll();
+        $matchs = $repoMatch->findBy(array('user' => $user));
 
         return $this->render('aveyrond/club.html.twig', [
             'controller_name' => 'AveyrondController',
@@ -154,10 +160,13 @@ class AveyrondController extends AbstractController
     }
 
      /**       
-     * @Route("/matchs", name="matchs")
+     * @Route("club/matchs", name="matchs")
      */
-    public function matchs(Request $request)
-    {
+    public function matchs(Request $request): Response
+    {   
+        $user = $this->getUser();
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $data_users = $repository->findOneBy(['id' => $user->getId()]);
         $match = new Matchs();
         $form = $this->createForm(MatchFormType::class, $match, array());
 
@@ -167,7 +176,8 @@ class AveyrondController extends AbstractController
             $match->setEquipe($form['Equipe']->getData());
             $match->setAdversaire($form['Adversaire']->getData());
             $match->setDateMatch($form['DateMatch']->getData());
-
+            $match->setUser($user);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($match);
             $em->flush();
@@ -180,6 +190,7 @@ class AveyrondController extends AbstractController
         }
 
         return $this->render('aveyrond/matchs.html.twig', [
+            'data_users' => $data_users,
             'form' => $form->createView(),
             'controller_name' => 'AveyrondController',
         ]);

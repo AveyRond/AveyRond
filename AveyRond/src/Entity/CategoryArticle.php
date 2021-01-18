@@ -45,5 +45,4 @@ class CategoryArticle
         return $this;
     }
 
-
 }

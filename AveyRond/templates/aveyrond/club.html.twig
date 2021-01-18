@@ -8,17 +8,18 @@
     <li class="breadcrumb-item"><a href="{{ path('accueil') }}">Accueil</a></li>
     <li class="breadcrumb-item active">Accès Club</li>
 </ol>
+<main>
+    <a class="btn btn-lg btn-primary" href="{{ path('matchs') }}">Ajouter vos matchs</a>
 
-<button class="btn btn-lg btn-primary" href="#">Ajouter vos matchs</button>
+    {% for matchs in match %}
+        <article id="article_match">
+            <div>
+                <h1>{{ matchs.Equipe }} <span id="versus">VS</span> {{ matchs.Adversaire }}</h1>
+                <p>{{ matchs.DateMatch | date('d/m/Y H:i') }}</p>
+                <hr>
+            </div>
+        </article> 
+    {% endfor %}
 
- {% for match in matchs %}
-    <article>
-        <div>
-            <h1>{{ match.Equipe }} VS {{ match.Adversaire }}</h1>
-            <p>{{ match.DateMatch }}</p>
-            <hr>
-        </div>
-    </article> 
-{% endfor %}
-
+</main>
 {% endblock %}

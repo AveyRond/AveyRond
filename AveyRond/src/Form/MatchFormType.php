@@ -19,7 +19,7 @@ class MatchFormType extends AbstractType
                 'class' => 'form-control',
                 'title' => 'Equipe',
             )))
-            ->add('Adversaire', TextType::class, array('label' => 'Equipe adverse', 'attr' => array(
+            ->add('Adversaire', TextType::class, array('label' => 'Equipe Adverse', 'attr' => array(
                 'class' => 'form-control',
                 'title' => 'Adversaire',
             )))

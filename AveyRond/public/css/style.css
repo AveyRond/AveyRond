@@ -7,6 +7,12 @@
 main {
   margin: 0 20% 0 20%;
 }
+main>h1 {
+  margin: 2% 0 2% 0;
+}
+table {
+  text-align: center;
+}
 article {
   display: grid;
   grid-template-columns: 30% 70%;
@@ -67,6 +73,15 @@ article > div > h1 {
 }
 #registration_form_agreeTerms {
   margin-left: 2%;
+}
+#match_form > div {
+  margin-top: 2%;
+}
+#article_match {
+  display: block;
+}
+#versus {
+  text-transform: lowercase;
 }
 @media (max-width: 1430px) {
   .nav-item {
