@@ -29,7 +29,6 @@ class AveyrondController extends AbstractController
             8
         );
 
-        $articles = $repo->findBy([], ['id' => 'DESC']);
         $repo = $this->getDoctrine()->getRepository(Matchs::class);
 
         $matchs = $repo->findAll();
