@@ -18,7 +18,8 @@
         <div>
             <h1>{{ articlesMerca.title }}</h1>
             <p class="content">{{ articlesMerca.content | raw }}</p>
-            <div>Ecrit le {{ articlesMerca.createdAt | date('d/m/Y') }} par {{ articlesMerca.author }} dans la catégorie {{ articlesMerca.category.categoryType }}</div>
+            <div>Ecrit le {{ articlesMerca.createdAt | date('d/m/Y') }} par <span>{{ articlesMerca.author }}</span> dans la catégorie {{ articlesMerca.category.categoryType }}</div>
+            <a href="{{ path('show_article', {'id': articlesMerca.id}) }}" class="btn btn-outline-primary">Lire la suite</a>
             <hr>
         </div>
     </article>

@@ -3,10 +3,11 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
+    
+<section id="inscription">
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
-<section id="inscription">
     <h1>Inscription</h1>
 
     {{ form_start(registrationForm) }}

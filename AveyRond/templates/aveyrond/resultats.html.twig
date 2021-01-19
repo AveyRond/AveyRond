@@ -18,7 +18,8 @@
         <div>
             <h1>{{ articlesResult.title }}</h1>
             <p class="content">{{ articlesResult.content | raw }}</p>
-            <div>Ecrit le {{ articlesResult.createdAt | date('d/m/Y') }} par {{ articlesResult.author }} dans la catégorie {{ articlesResult.category.categoryType }}</div>
+            <div>Ecrit le {{ articlesResult.createdAt | date('d/m/Y') }} par <span>{{ articlesResult.author }}</span> dans la catégorie {{ articlesResult.category.categoryType }}</div>
+            <a href="{{ path('show_article', {'id': articlesResult.id}) }}" class="btn btn-outline-primary">Lire la suite</a>
             <hr>
         </div>
     </article>

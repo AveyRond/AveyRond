@@ -13,48 +13,48 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div class="navbar-brand" href="#"><img src="Sans titre.png"></div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <div class="navbar-brand" href="#"><img src="Sans titre.png"></div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('accueil') }}">Accueil
-                        <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('actu') }}">Actualités</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('interviews') }}">Interviews</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('resultats') }}">Résultats</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('buteurs') }}">Classements des buteurs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('mercato') }}">Mercato</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('club') }}">Accès Club 🔒</a>
-                    </li>
-                    {% if is_granted("ROLE_ADMIN") %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('formulaire') }}">Formulaire</a>
-                    </li>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('accueil') }}">Accueil
+                            <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('actu') }}">Actualités</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('interviews') }}">Interviews</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('resultats') }}">Résultats</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('buteurs') }}">Classements des buteurs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('mercato') }}">Mercato</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('club') }}">Accès Club 🔒</a>
+                        </li>
+                        {% if is_granted("ROLE_ADMIN") %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('formulaire') }}">Formulaire</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    {% if is_granted("ROLE_USER", "ROLE_ADMIN") %}
+                    <a href="{{ path('logout') }}" id="deconnexion">Déconnexion</a>
                     {% endif %}
-                </ul>
-                {% if is_granted("ROLE_USER", "ROLE_ADMIN") %}
-                <a href="{{ path('logout') }}" id="deconnexion">Déconnexion</a>
-                {% endif %}
-            </div>
-        </nav>
+                </div>
+            </nav>
         {% for flash_message in app.session.flashbag.get('notice') %}
             <div class="alert alert-dismissible alert-success">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>

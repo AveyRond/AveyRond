@@ -12,6 +12,8 @@ use App\Entity\User;
 use App\Entity\CategoryArticle;
 use App\Form\Form;
 use App\Form\MatchFormType;
+use DateTime;
+use Symfony\Component\Validator\Constraints\Date;
 
 class AveyrondController extends AbstractController
 {
@@ -22,7 +24,7 @@ class AveyrondController extends AbstractController
     {
         $repo = $this->getDoctrine()->getRepository(Article::class);
 
-        $articles = $repo->findAll();
+        $articles = $repo->findBy([], ['id' => 'DESC']);
         $repo = $this->getDoctrine()->getRepository(Matchs::class);
 
         $matchs = $repo->findAll();
@@ -40,7 +42,7 @@ class AveyrondController extends AbstractController
     public function actu(): Response
     {
         $repository = $this->getDoctrine()->getRepository(Article::class);
-        $articleActu = $repository->findBy(array('category' => 1));
+        $articleActu = $repository->findBy(array('category' => 1), ['id' => 'DESC']);
         return $this->render('aveyrond/actualites.html.twig', [
             'articlesActu' => $articleActu
         ]);
@@ -52,7 +54,7 @@ class AveyrondController extends AbstractController
     public function interviews(): Response
     {
         $repository = $this->getDoctrine()->getRepository(Article::class);
-        $articleInter = $repository->findBy(array('category' => 2));
+        $articleInter = $repository->findBy(array('category' => 2), ['id' => 'DESC']);
         return $this->render('aveyrond/interviews.html.twig', [
             'articlesInter' => $articleInter
         ]);
@@ -64,7 +66,7 @@ class AveyrondController extends AbstractController
     public function resultats(): Response
     {
         $repository = $this->getDoctrine()->getRepository(Article::class);
-        $articleResult = $repository->findBy(array('category' => 3));
+        $articleResult = $repository->findBy(array('category' => 3), ['id' => 'DESC']);
         return $this->render('aveyrond/resultats.html.twig', [
             'articlesResult' => $articleResult
         ]);
@@ -76,7 +78,7 @@ class AveyrondController extends AbstractController
     public function classButeurs(): Response
     {
         $repository = $this->getDoctrine()->getRepository(Article::class);
-        $articleClassB = $repository->findBy(array('category' => 4));
+        $articleClassB = $repository->findBy(array('category' => 4), ['id' => 'DESC']);
         return $this->render('aveyrond/buteurs.html.twig', [
             'articlesClassB' => $articleClassB
         ]);
@@ -88,7 +90,7 @@ class AveyrondController extends AbstractController
     public function mercato(): Response
     {
         $repository = $this->getDoctrine()->getRepository(Article::class);
-        $articleMerca = $repository->findBy(array('category' => 5));
+        $articleMerca = $repository->findBy(array('category' => 5), ['id' => 'DESC']);
         return $this->render('aveyrond/mercato.html.twig', [
             'articlesMerca' => $articleMerca
         ]);
@@ -103,7 +105,7 @@ class AveyrondController extends AbstractController
         $repoMatch = $this->getDoctrine()->getRepository(Matchs::class);
 
         $matchs = $repoMatch->findBy(array('user' => $user));
-
+        
         return $this->render('aveyrond/club.html.twig', [
             'controller_name' => 'AveyrondController',
             'match' => $matchs
