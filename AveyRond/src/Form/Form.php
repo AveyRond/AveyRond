@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\CategoryArticle;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class Form extends AbstractType
 {
@@ -34,7 +35,7 @@ class Form extends AbstractType
                 'title' => 'Titre',
             )))
 
-            ->add('content', TextareaType::class, [
+            ->add('content', CKEditorType::class, [
                 'label' => 'Contenu',
                 'attr' => ['class' => 'form-control',],
             ])

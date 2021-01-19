@@ -12,17 +12,22 @@ use App\Entity\User;
 use App\Entity\CategoryArticle;
 use App\Form\Form;
 use App\Form\MatchFormType;
-use DateTime;
-use Symfony\Component\Validator\Constraints\Date;
+use Knp\Component\Pager\PaginatorInterface;
 
 class AveyrondController extends AbstractController
 {
     /**
      * @Route("/", name="accueil")
      */
-    public function index(): Response
+    public function index(Request $request, PaginatorInterface $paginator): Response
     {
         $repo = $this->getDoctrine()->getRepository(Article::class);
+        
+        $articles = $paginator->paginate(
+            $repo->findBy([], ['id' => 'DESC']),
+            $request->query->getInt('page', 1),
+            8
+        );
 
         $articles = $repo->findBy([], ['id' => 'DESC']);
         $repo = $this->getDoctrine()->getRepository(Matchs::class);
@@ -44,7 +49,7 @@ class AveyrondController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Article::class);
         $articleActu = $repository->findBy(array('category' => 1), ['id' => 'DESC']);
         return $this->render('aveyrond/actualites.html.twig', [
-            'articlesActu' => $articleActu
+            'articlesActu' => $articleActu,
         ]);
     }
 
@@ -161,7 +166,62 @@ class AveyrondController extends AbstractController
         ]);
     }
 
-     /**       
+    /**       
+     * @Route("/article/{id}/edit", name="article_edit")
+     */
+    public function update($id, Request $request): Response
+    {
+        $repository=$this->getDoctrine()->getRepository(Article::class);
+        $article = $repository->findOneBy(array('id' => $id));
+        $form = $this->createForm(Form::class, $article, array());
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() and $form->isValid()) {
+            $article->setCategory($form['category']->getData());
+            $article->setTitle($form['title']->getData());
+            $article->setContent($form['content']->getData());
+            $article->setAuthor($form['author']->getData());
+            // $article->setCreatedAt(new \DateTime());
+            $article->setImage($form['image']->getData());
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($article);
+            $em->flush();
+            $this->addFlash(
+                'notice',
+                'L\'article a bien été modifié',
+            );
+
+            return $this->redirectToRoute('accueil');
+        }
+
+        return $this->render('aveyrond/update.html.twig', [
+            'form' => $form->createView(),
+            'controller_name' => 'Editer un article',
+        ]);
+    }
+
+    /**       
+     * @Route("/article/{id}/delete", name="article_delete")
+     */
+    public function delete($id): Response
+    {
+        $repository=$this->getDoctrine()->getRepository(Article::class);
+        $article=$repository->findOneBy(array('id' => $id));
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($article);
+        $em->flush();
+        $this->addFlash(
+            'notice',
+            'L\'article a bien été supprimé',
+        );
+
+        return $this->redirectToRoute('accueil');
+    }
+
+    /**       
      * @Route("club/matchs", name="matchs")
      */
     public function matchs(Request $request): Response
