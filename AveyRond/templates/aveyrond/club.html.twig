@@ -21,5 +21,10 @@
         </article> 
     {% endfor %}
 
+    <?php
+    $homepage = file_get_contents('http://lequipe.fr');
+    echo $homepage;
+    ?>
+
 </main>
 {% endblock %}

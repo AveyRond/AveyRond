@@ -17,6 +17,7 @@
             <h1>{{ articlesActu.title }}</h1>
             <p class="content">{{ articlesActu.content | raw }}</p>
             <div>Ecrit le {{ articlesActu.createdAt | date('d/m/Y') }} par {{ articlesActu.author }} dans la catégorie {{ articlesActu.category.categoryType }}</div>
+            <a href="{{ path('show_article', {'id': articlesActu.id}) }}" class="btn btn-outline-primary">Lire la suite</a>
             <hr>
         </div>
     </article>

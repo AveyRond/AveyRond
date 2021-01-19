@@ -19,6 +19,7 @@
             <h1>{{ articlesClassB.title }}</h1>
             <p class="content">{{ articlesClassB.content | raw }}</p> 
             <div>Ecrit le {{ articlesClassB.createdAt | date('d/m/Y') }} par {{ articlesClassB.author }} dans la catégorie {{ articlesClassB.category.categoryType }}</div>
+            <a href="{{ path('show_article', {'id': articlesClassB.id}) }}" class="btn btn-outline-primary">Lire la suite</a>
             <hr>
         </div>
     </article>

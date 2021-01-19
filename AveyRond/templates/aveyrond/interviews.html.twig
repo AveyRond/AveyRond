@@ -18,6 +18,7 @@
             <h1>{{ articlesInter.title }}</h1>
             <p class="content">{{ articlesInter.content | raw }}</p>
             <div>Ecrit le {{ articlesInter.createdAt | date('d/m/Y') }} par {{ articlesInter.author }} dans la catégorie {{ articlesInter.category.categoryType }}</div>
+            <a href="{{ path('show_article', {'id': articlesInter.id}) }}" class="btn btn-outline-primary">Lire la suite</a>
             <hr>
         </div>
     </article>
