@@ -109,6 +109,12 @@ article > div > div>span {
   text-overflow: ellipsis;
   vertical-align: middle;
 }
+article>div>p:nth-of-type(2) {
+  font-size: 15pt;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
 #deconnexion {
   padding: 1%;
   color: white;
