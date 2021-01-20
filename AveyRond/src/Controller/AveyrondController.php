@@ -22,7 +22,7 @@ class AveyrondController extends AbstractController
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
         $repo = $this->getDoctrine()->getRepository(Article::class);
-        
+
         $articles = $paginator->paginate(
             $repo->findBy([], ['id' => 'DESC']),
             $request->query->getInt('page', 1),
@@ -109,7 +109,7 @@ class AveyrondController extends AbstractController
         $repoMatch = $this->getDoctrine()->getRepository(Matchs::class);
 
         $matchs = $repoMatch->findBy(array('user' => $user));
-        
+
         return $this->render('aveyrond/club.html.twig', [
             'controller_name' => 'AveyrondController',
             'match' => $matchs
@@ -131,7 +131,7 @@ class AveyrondController extends AbstractController
     }
 
     /**       
-     * @Route("/formulaire", name="formulaire")
+     * @Route("/admin/formulaire", name="formulaire")
      */
     public function form(Request $request)
     {
@@ -147,6 +147,7 @@ class AveyrondController extends AbstractController
             $article->setAuthor($form['author']->getData());
             $article->setCreatedAt(new \DateTime());
             $article->setImage($form['image']->getData());
+            $article->setDescriptionImage($form['descriptionImage']->getData());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
@@ -166,11 +167,11 @@ class AveyrondController extends AbstractController
     }
 
     /**       
-     * @Route("/article/{id}/edit", name="article_edit")
+     * @Route("/admin/article/{id}/edit", name="article_edit")
      */
     public function update($id, Request $request): Response
     {
-        $repository=$this->getDoctrine()->getRepository(Article::class);
+        $repository = $this->getDoctrine()->getRepository(Article::class);
         $article = $repository->findOneBy(array('id' => $id));
         $form = $this->createForm(Form::class, $article, array());
 
@@ -183,6 +184,7 @@ class AveyrondController extends AbstractController
             $article->setAuthor($form['author']->getData());
             // $article->setCreatedAt(new \DateTime());
             $article->setImage($form['image']->getData());
+            $article->setDescriptionImage($form['descriptionImage']->getData());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
@@ -202,12 +204,12 @@ class AveyrondController extends AbstractController
     }
 
     /**       
-     * @Route("/article/{id}/delete", name="article_delete")
+     * @Route("/admin/article/{id}/delete", name="article_delete")
      */
     public function delete($id): Response
     {
-        $repository=$this->getDoctrine()->getRepository(Article::class);
-        $article=$repository->findOneBy(array('id' => $id));
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+        $article = $repository->findOneBy(array('id' => $id));
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($article);
@@ -224,7 +226,7 @@ class AveyrondController extends AbstractController
      * @Route("club/matchs", name="matchs")
      */
     public function matchs(Request $request): Response
-    {   
+    {
         $user = $this->getUser();
         $repository = $this->getDoctrine()->getRepository(User::class);
         $data_users = $repository->findOneBy(['id' => $user->getId()]);
@@ -238,7 +240,7 @@ class AveyrondController extends AbstractController
             $match->setAdversaire($form['Adversaire']->getData());
             $match->setDateMatch($form['DateMatch']->getData());
             $match->setUser($user);
-            
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($match);
             $em->flush();
