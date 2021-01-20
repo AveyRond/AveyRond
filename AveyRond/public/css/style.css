@@ -36,7 +36,7 @@ article > div:nth-of-type(1) {
 }
 article > div > h1 {
   white-space: initial;
-  margin-top: 2%;
+  margin-top: 1%;
 }
 article > div > a {
   margin-top: 2%;
@@ -65,6 +65,10 @@ article > div > div>span {
   width: 100%;
   text-align: initial;
   background-color: rgba(0, 0, 0, 0.5);
+}
+#index:first-child > div > span {
+  margin-top: 5px;
+  font-size: 10pt;
 }
 #index:first-child > div > h1 {
   color: white;
