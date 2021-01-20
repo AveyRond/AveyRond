@@ -6,8 +6,8 @@
 <main>
     <article id="show">
         <h1>{{ article.title }}</h1>
+        <div>Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} par <span>{{ article.author }}</span> <span class="badge badge-pill badge-primary">{{ article.category.categoryType }}</span></div>
         <img src={{ article.image }}>
-        <div>Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} par <span>{{ article.author }}</span><span class="badge badge-pill badge-primary">{{ article.category.categoryType }}</span></div>
         <p class="content">{{ article.content | raw }}</p>
         {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-info">Éditer</a>

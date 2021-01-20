@@ -59,7 +59,7 @@ article > div > div>span {
 #index:first-child > div {
   position: absolute;
   margin-left: 0;
-  padding: 0 0 2% 2%;
+  padding: 1% 0 2% 2%;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -101,7 +101,7 @@ article > div > div>span {
   margin-bottom: 5%;
   font-size: 10pt;
 }
-#show>div>span {
+#show>div>span:first-child {
   color: red;
 }
 #show>img {
