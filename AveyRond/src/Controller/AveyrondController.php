@@ -13,6 +13,8 @@ use App\Entity\CategoryArticle;
 use App\Form\Form;
 use App\Form\MatchFormType;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\CssSelector\CssSelectorConverter;
 
 class AveyrondController extends AbstractController
 {
@@ -109,6 +111,18 @@ class AveyrondController extends AbstractController
         $repoMatch = $this->getDoctrine()->getRepository(Matchs::class);
 
         $matchs = $repoMatch->findBy(array('user' => $user));
+        $html = file_get_contents('https://aveyron.fff.fr/competitions/?id=375137&poule=1&phase=1&type=ch&tab=ranking');
+
+        $crawler = new Crawler($html);
+
+        $nodeValues = $crawler->filter('table > tr')->each(
+            function (Crawler $node, $i) {
+
+                return $node->text();
+            }
+        );
+
+        print_r($nodeValues);
 
         return $this->render('aveyrond/club.html.twig', [
             'controller_name' => 'AveyrondController',
