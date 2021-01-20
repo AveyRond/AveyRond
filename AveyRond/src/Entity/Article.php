@@ -66,6 +66,11 @@ class Article
      */
     private $category;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $descriptionImage;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -139,6 +144,18 @@ class Article
     public function setCategory(?CategoryArticle $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getDescriptionImage(): ?string
+    {
+        return $this->descriptionImage;
+    }
+
+    public function setDescriptionImage(string $descriptionImage): self
+    {
+        $this->descriptionImage = $descriptionImage;
 
         return $this;
     }

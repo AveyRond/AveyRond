@@ -49,6 +49,10 @@ class Form extends AbstractType
                 'label' => "Mettez l'URL de l'image",
                 'attr' => array('class' => 'form-control')
             ])
+            ->add('descriptionImage', TextType::class, array('label' => 'Description de l\'image', 'attr' => array(
+                'class' => 'form-control',
+                'title' => 'Description Image',
+            )))
             ->add('save', SubmitType::class, array(
                 'label' => 'Enregistrer',
                 'attr' => array(
