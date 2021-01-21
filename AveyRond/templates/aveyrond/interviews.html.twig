@@ -16,8 +16,8 @@
         <img src={{ articlesInter.image }}>
         <div>
             <h1>{{ articlesInter.title }}</h1>
-            <p class="content">{{ articlesInter.content | raw }}</p>
-            <div>Ecrit le {{ articlesInter.createdAt | date('d/m/Y') }} par <span>{{ articlesInter.author }}</span> dans la catégorie {{ articlesInter.category.categoryType }}</div>
+            <p class="content">{{ articlesInter.content | striptags | u.truncate(80, '...', false) | raw }}</p>
+            {# <div>Ecrit le {{ articlesInter.createdAt | date('d/m/Y') }} par <span>{{ articlesInter.author }}</span> dans la catégorie {{ articlesInter.category.categoryType }}</div> #}
             <a href="{{ path('show_article', {'id': articlesInter.id}) }}" class="btn btn-outline-primary">Lire la suite</a>
             <hr>
         </div>

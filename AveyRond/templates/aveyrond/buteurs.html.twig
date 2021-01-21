@@ -17,8 +17,8 @@
         <img src={{ articlesClassB.image }}>
         <div>
             <h1>{{ articlesClassB.title }}</h1>
-            <p class="content">{{ articlesClassB.content | raw }}</p> 
-            <div>Ecrit le {{ articlesClassB.createdAt | date('d/m/Y') }} par <span>{{ articlesClassB.author }}</span> dans la catégorie {{ articlesClassB.category.categoryType }}</div>
+            <p class="content">{{ articlesClassB.content | striptags | u.truncate(80, '...', false) | raw }}</p> 
+            {# <div>Ecrit le {{ articlesClassB.createdAt | date('d/m/Y') }} par <span>{{ articlesClassB.author }}</span> dans la catégorie {{ articlesClassB.category.categoryType }}</div> #}
             <a href="{{ path('show_article', {'id': articlesClassB.id}) }}" class="btn btn-outline-primary">Lire la suite</a>
             <hr>
         </div>

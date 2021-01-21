@@ -14,9 +14,10 @@
     <article>
         <img src={{ articlesActu.image }}>
         <div>
+            {# <span class="badge badge-dark">{{ articlesActu.category.categoryType }}</span> #}
             <h1>{{ articlesActu.title }}</h1>
-            <p class="content">{{ articlesActu.content | raw }}</p>
-            <div>Ecrit le {{ articlesActu.createdAt | date('d/m/Y') }} par <span>{{ articlesActu.author }}</span> dans la catégorie {{ articlesActu.category.categoryType }}</div>
+            <p class="content">{{ articlesActu.content | striptags | u.truncate(80, '...', false) | raw }}</p>
+            {# <div>Ecrit le {{ articlesActu.createdAt | date('d/m/Y') }} par <span>{{ articlesActu.author }}</span> dans la catégorie </div> #}
             <a href="{{ path('show_article', {'id': articlesActu.id}) }}" class="btn btn-outline-primary">Lire la suite</a>
             <hr>
         </div>
