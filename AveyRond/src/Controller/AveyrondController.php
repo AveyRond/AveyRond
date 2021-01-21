@@ -107,26 +107,28 @@ class AveyrondController extends AbstractController
      */
     public function club(): Response
     {
-        $user = $this->getUser();
-        $repoMatch = $this->getDoctrine()->getRepository(Matchs::class);
+        // $user = $this->getUser();
+        // $repoMatch = $this->getDoctrine()->getRepository(Matchs::class);
 
-        $matchs = $repoMatch->findBy(array('user' => $user));
+        // $matchs = $repoMatch->findBy(array('user' => $user));
         $html = file_get_contents('https://aveyron.fff.fr/competitions/?id=375137&poule=1&phase=1&type=ch&tab=ranking');
 
         $crawler = new Crawler($html);
 
-        $nodeValues = $crawler->filter('table > tr')->each(
-            function (Crawler $node, $i) {
+        $tableth = $crawler->filter('table')->filter('th')->each(function ($th, $i) {
+            return $th->text();
+        });
 
-                return $node->text();
-            }
-        );
-
-        print_r($nodeValues);
-
+        $table = $crawler->filter('table')->filter('tr')->each(function ($tr, $i) {
+            return $tr->filter('td')->each(function ($td, $i) {
+                return trim($td->text());
+            });
+        });
         return $this->render('aveyrond/club.html.twig', [
             'controller_name' => 'AveyrondController',
-            'match' => $matchs
+            // 'match' => $matchs,
+            'tables' => $table,
+            'tablesth' => $tableth
         ]);
     }
 

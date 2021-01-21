@@ -9,9 +9,9 @@
     <li class="breadcrumb-item active">Accès Club</li>
 </ol>
 <main>
-    <a class="btn btn-lg btn-primary" href="{{ path('matchs') }}">Ajouter vos matchs</a>
+    {# <a class="btn btn-lg btn-primary" href="{{ path('matchs') }}">Ajouter vos matchs</a> #}
 
-    {% for matchs in match %}
+    {# {% for matchs in match %}
         <article id="article_match">
             <div>
                 <h1>{{ matchs.Equipe }} <span id="versus">VS</span> {{ matchs.Adversaire }}</h1>
@@ -19,7 +19,23 @@
                 <hr>
             </div>
         </article> 
-    {% endfor %}
-    
+    {% endfor %} #}
+    <h1>Classement D1 Seniors</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            {% for tableth in tablesth %}
+                    <th scope="col">{{ tableth }}</th>
+            {% endfor %}
+        </thead>
+        <tbody>
+        {% for table in tables %}
+            <tr>
+                {% for value in table %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </main>
 {% endblock %}
