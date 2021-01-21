@@ -34,10 +34,9 @@
             <article id="index">
                 <img src={{ article.image }}>
                 <div>
-                    <span class="badge badge-pill badge-info">{{ article.category.categoryType }}</span>
+                    <span class="badge badge-dark">{{ article.category.categoryType }}</span>
                     <h1>{{ article.title }}</h1>
-                    <p class="content">{{ article.content | striptags | u.truncate(80, '...', false) | raw }}</p>
-                    <div>Ecrit le {{ article.createdAt | date('d/m/Y H:i') }} par <span>{{ article.author }}</span></div>
+                    {# <p class="content">{{ article.content | striptags | u.truncate(80, '...', false) | raw }}</p> #}
                     <a href="{{ path('show_article', {'id': article.id}) }}" class="btn btn-outline-primary">Lire la suite</a>
                     <hr>
                 </div>

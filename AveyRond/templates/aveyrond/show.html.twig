@@ -5,10 +5,14 @@
 {% block body %}
 <main>
     <article id="show">
-        <span class="badge badge-info badge_show">{{ article.category.categoryType }}</span>
-        <h1>{{ article.title }}</h1>
+        <span class="badge badge-dark">{{ article.category.categoryType }}</span><h1>{{ article.title }}</h1>
+        <div>
+            <img src={{ article.image }}>
+            <div>
+                <p>{{ article.descriptionImage }}</p>
+            </div>
+        </div>
         <div>Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} par <span>{{ article.author }}</span></div>
-        <img src={{ article.image }}>
         <p class="content">{{ article.content | raw }}</p>
         {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-info">Éditer</a>

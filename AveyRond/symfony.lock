@@ -201,6 +201,9 @@
     "symfony/doctrine-bridge": {
         "version": "v5.2.1"
     },
+    "symfony/dom-crawler": {
+        "version": "v5.2.1"
+    },
     "symfony/dotenv": {
         "version": "v5.2.1"
     },
