@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ligue-R2 Poule C{% endblock %}
+
+{% block body %}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ path('accueil') }}">Accueil</a></li>
+    <li class="breadcrumb-item active">Ligue-R2 Poule C</li>
+</ol>
+<main>
+    <h1>Classement Ligue-R2 Poule C</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            {% for tableth in tablesth %}
+                    <th scope="col">{{ tableth }}</th>
+            {% endfor %}
+        </thead>
+        <tbody>
+        {% for table in tables %}
+            <tr>
+                {% for value in table %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}

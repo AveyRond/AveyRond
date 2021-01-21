@@ -103,14 +103,36 @@ class AveyrondController extends AbstractController
     }
 
     /**
-     * @Route("/club", name="club")
+     * @Route("/R2pouleC", name="R2pouleC")
      */
-    public function club(): Response
+    public function R2pouleC(): Response
     {
-        // $user = $this->getUser();
-        // $repoMatch = $this->getDoctrine()->getRepository(Matchs::class);
+        $html = file_get_contents('https://occitanie.fff.fr/competitions/?id=374081&poule=3&phase=1&type=ch&tab=ranking');
 
-        // $matchs = $repoMatch->findBy(array('user' => $user));
+        $crawler = new Crawler($html);
+
+        $tableth = $crawler->filter('table')->filter('th')->each(function ($th, $i) {
+            return $th->text();
+        });
+
+        $table = $crawler->filter('table')->filter('tr')->each(function ($tr, $i) {
+            return $tr->filter('td')->each(function ($td, $i) {
+                return trim($td->text());
+            });
+        });
+
+        return $this->render('aveyrond/R2pouleC.html.twig', [
+            'controller_name' => 'AveyrondController',
+            'tables' => $table,
+            'tablesth' => $tableth
+        ]);
+    }
+
+    /**
+     * @Route("/DistrictD1", name="DistrictD1")
+     */
+    public function DistrictD1(): Response
+    {
         $html = file_get_contents('https://aveyron.fff.fr/competitions/?id=375137&poule=1&phase=1&type=ch&tab=ranking');
 
         $crawler = new Crawler($html);
@@ -124,11 +146,36 @@ class AveyrondController extends AbstractController
                 return trim($td->text());
             });
         });
+
+        $html_resultat = file_get_contents('https://aveyron.fff.fr/competitions/?id=375137&poule=1&phase=1&type=ch&tab=resultat');
+
+        $crawler_resultat = new Crawler($html_resultat);
+
+        $div_resultat = $crawler_resultat->filter('div.result-option')->each(function ($node, $i) {
+            return $node->html();
+        });
+
+        return $this->render('aveyrond/DistrictD1.html.twig', [
+            'controller_name' => 'AveyrondController',
+            'tables' => $table,
+            'tablesth' => $tableth,
+            'div' => $div_resultat
+        ]);
+    }
+
+    /**
+     * @Route("/club", name="club")
+     */
+    public function club(): Response
+    {
+        // $user = $this->getUser();
+        // $repoMatch = $this->getDoctrine()->getRepository(Matchs::class);
+
+        // $matchs = $repoMatch->findBy(array('user' => $user));
+       
         return $this->render('aveyrond/club.html.twig', [
             'controller_name' => 'AveyrondController',
             // 'match' => $matchs,
-            'tables' => $table,
-            'tablesth' => $tableth
         ]);
     }
 

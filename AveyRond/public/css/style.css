@@ -187,6 +187,95 @@ article > div > div > span {
 #versus {
   text-transform: lowercase;
 }
+#transition {
+  border-bottom: 2px solid;
+  margin: 5% 20% 5% 20%;
+}
+
+/* Resultat Match */
+#resultat {
+  margin-top: 5%;
+}
+.date_tour {
+  border-bottom: 1px solid;
+  border-color: #f2f2f2;
+  padding-bottom: 1%;
+  font-size: 12pt;
+}
+.text-center {
+  margin-bottom: 5%;
+}
+.text-center>a {
+  text-decoration: none;
+}
+.results-content {
+  margin-top: 2%;
+  border-bottom: 1px solid;
+  border-color: #f2f2f2;
+}
+.confrontation>a {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.update-date {
+  display: none;
+}
+.date {
+  text-align: center;
+  margin-bottom: 1%;
+  font-size: 16pt;
+}
+.detail {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 1%;
+}
+.equipe1 {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  align-items: center;
+}
+.name {
+  font-size: 14pt;
+  font-weight: bold;
+}
+.logo>img {
+  height: initial;
+}
+.equipe1>div:nth-of-type(even) {
+  text-align: left;
+}
+.equipe2>div:nth-of-type(odd) {
+  text-align: right;
+}
+.score_match {
+  font-size: 26pt;
+  font-weight: bold;
+}
+.equipe2 {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  align-items: center;
+}
+.number {
+  height: 30px;
+}
+
+
+table>tbody>tr:nth-of-type(2) {
+  background-color: #4bbf73;
+  color: white;
+}
+table>tbody>tr:nth-last-child(2) {
+  background-color: #d9534f;
+  color: white;
+}
+table>tbody>tr:last-child {
+  background-color: #d9534f;
+  color: white;
+}
 @media (max-width: 1700px) {
   article {
     grid-template-columns: 40% 60%;

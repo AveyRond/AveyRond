@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}District-D1{% endblock %}
+
+{% block body %}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ path('accueil') }}">Accueil</a></li>
+    <li class="breadcrumb-item active">District-D1</li>
+</ol>
+<main>
+    <h1>Classement D1 Seniors</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            {% for tableth in tablesth %}
+                    <th scope="col">{{ tableth }}</th>
+            {% endfor %}
+        </thead>
+        <tbody>
+        {% for table in tables %}
+            <tr>
+                {% for value in table %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div id="transition"></div>
+    <h1>Résultats Matchs</h1>
+    <div id="resultat">
+        {% for value in div %}
+            <div>{{ value|replace({'data-src':'src'})|replace({'href="':'target="_blank" href="https://aveyron.fff.fr'})|replace({'<div class="date_tour">':'<span class="date_tour">'})|raw }}</div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

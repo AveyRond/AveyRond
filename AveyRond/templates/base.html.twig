@@ -14,6 +14,7 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div class="navbar-brand" href="#"><img src="{{ asset('images/Sans titre.png') }}"></div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,8 +46,8 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Compétitions</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Ligue - R2 Poule C</a>
-                                <a class="dropdown-item" href="#">District - D1</a>
+                                <a class="dropdown-item" href="{{ path('R2pouleC') }}">Ligue - R2 Poule C</a>
+                                <a class="dropdown-item" href="{{ path('DistrictD1') }}">District - D1</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -63,6 +64,7 @@
                     {% endif %}
                 </div>
             </nav>
+            
         {% for flash_message in app.session.flashbag.get('notice') %}
             <div class="alert alert-dismissible alert-success">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -70,8 +72,9 @@
             </div>
         {% endfor %}
         {% block body %}
-        
+            
         {% endblock %}
+       
         {% block javascripts %}
         {% endblock %}
     </body>

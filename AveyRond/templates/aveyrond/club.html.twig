@@ -20,22 +20,6 @@
             </div>
         </article> 
     {% endfor %} #}
-    <h1>Classement D1 Seniors</h1>
-    <table class="table">
-        <thead class="thead-dark">
-            {% for tableth in tablesth %}
-                    <th scope="col">{{ tableth }}</th>
-            {% endfor %}
-        </thead>
-        <tbody>
-        {% for table in tables %}
-            <tr>
-                {% for value in table %}
-                    <td>{{ value }}</td>
-                {% endfor %}
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 </main>
+
 {% endblock %}
