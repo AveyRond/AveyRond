@@ -10,7 +10,7 @@
 </ol>
 <main>
     <h1>Classement D1 Seniors</h1>
-    <table class="table">
+    <table class="table table-responsive">
         <thead class="thead-dark">
             {% for tableth in tablesth %}
                     <th scope="col">{{ tableth }}</th>
@@ -26,7 +26,6 @@
         {% endfor %}
         </tbody>
     </table>
-    <div id="transition"></div>
     <h1>Résultats Matchs</h1>
     <div id="resultat">
         {% for value in div %}

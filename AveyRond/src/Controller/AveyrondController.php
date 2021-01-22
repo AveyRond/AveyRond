@@ -168,14 +168,14 @@ class AveyrondController extends AbstractController
      */
     public function club(): Response
     {
-        // $user = $this->getUser();
-        // $repoMatch = $this->getDoctrine()->getRepository(Matchs::class);
+        $user = $this->getUser();
+        $repoMatch = $this->getDoctrine()->getRepository(Matchs::class);
 
-        // $matchs = $repoMatch->findBy(array('user' => $user));
+        $matchs = $repoMatch->findBy(array('user' => $user));
        
         return $this->render('aveyrond/club.html.twig', [
             'controller_name' => 'AveyrondController',
-            // 'match' => $matchs,
+            'match' => $matchs,
         ]);
     }
 

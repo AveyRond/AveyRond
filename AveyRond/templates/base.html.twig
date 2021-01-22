@@ -14,57 +14,56 @@
 
         {% block stylesheets %}{% endblock %}
     </head>
-    <body>
-    
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <div class="navbar-brand" href="#"><img src="{{ asset('images/Sans titre.png') }}"></div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <body onload="load()">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="navbar-brand" href="#"><img src="{{ asset('images/Sans titre.png') }}"></div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse" id="navbarColor01">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('accueil') }}">Accueil
-                            <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('actu') }}">Actualités</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('interviews') }}">Interviews</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('resultats') }}">Résultats</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('buteurs') }}">Buteurs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('mercato') }}">Mercato</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Compétitions</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ path('R2pouleC') }}">Ligue - R2 Poule C</a>
-                                <a class="dropdown-item" href="{{ path('DistrictD1') }}">District - D1</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('club') }}">Accès Club 🔒</a>
-                        </li>
-                        {% if is_granted("ROLE_ADMIN") %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('formulaire') }}">Créer un article</a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                    {% if is_granted("ROLE_USER", "ROLE_ADMIN") %}
-                    <a href="{{ path('logout') }}" id="deconnexion">Déconnexion</a>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('accueil') }}">Accueil
+                        <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('actu') }}">Actualités</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('interviews') }}">Interviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('resultats') }}">Résultats</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('buteurs') }}">Buteurs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('mercato') }}">Mercato</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Compétitions</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ path('R2pouleC') }}">Ligue - R2 Poule C</a>
+                            <a class="dropdown-item" href="{{ path('DistrictD1') }}">District - D1</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('club') }}">Accès Club 🔒</a>
+                    </li>
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('formulaire') }}">Créer un article</a>
+                    </li>
                     {% endif %}
-                </div>
-            </nav>
+                </ul>
+                {% if is_granted("ROLE_USER", "ROLE_ADMIN") %}
+                <a href="{{ path('logout') }}" id="deconnexion">Déconnexion</a>
+                {% endif %}
+            </div>
+        </nav>
             
         {% for flash_message in app.session.flashbag.get('notice') %}
             <div class="alert alert-dismissible alert-success">
@@ -76,43 +75,46 @@
         {% block body %}
 
         {% endblock %}
-
             <footer class="site-footer">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-xs-6 col-md-3">
-            <h6>Liens utiles</h6>
-            <ul class="footer-links">
-              <li><a href="http://scanfcode.com/about/">À propos de nous</a></li>
-              <li><a href="http://scanfcode.com/contact/">Nous contacter</a></li>
-              <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Liens utiles</a></li>
-              <li><a href="http://scanfcode.com/privacy-policy/">Mentions légales</a></li>
-              <li><a href="http://scanfcode.com/sitemap/">Plan du site</a></li>
-            </ul>
-          </div>
-        </div>
-        <hr>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-sm-6 col-xs-12">
-            <p class="copyright-text">Copyright &copy; 2021 Tous droits réservés par 
-         <a href="#">Damien & David</a>.
-            </p>
-          </div>
-
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <ul class="social-icons">
-              <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
-              <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-              <li><a class="dribbble" href="#"><i class="fab fa-instagram"></i></a></li>  
-            </ul>
-          </div>
-        </div>
-      </div>
-</footer>
-
+                <div class="container">
+                    <div class="row foot">
+                        <div class="col-xs-6 col-md-3 link">
+                            <h6>Liens utiles</h6>
+                            <ul class="footer-links">
+                                <li><span onmouseover="a_propos()">À propos de nous</span></li>
+                                <li><span>Nous contacter</span></li>
+                                <li><span>Liens utiles</span></li>
+                                <li><span onmouseover="mention_legales()">Mentions légales</span></li>
+                                <li><span>Plan du site</span></li>
+                            </ul>
+                        </div>
+                        <div class="liens_utiles" id="propos">
+                            <p>Développer par Damien & David</p>
+                        </div>
+                        <div class="liens_utiles" id="mentions">
+                            <p>Nous nous sommes servis du site <a href="https://aveyron.fff.fr/">Aveyron FFF</a> pour récupérer le classement actuel de la région Aveyrond.</p>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-6 col-xs-12">
+                            <p class="copyright-text">Copyright &copy; 2021 Tous droits réservés par 
+                            <a href="#">Damien & David</a>.
+                            </p>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <ul class="social-icons">
+                            <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a class="dribbble" href="#"><i class="fab fa-instagram"></i></a></li>  
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        <script type="text/javascript" src="{{ asset('javascript/projet.js') }}"></script>
         {% block javascripts %}
         {% endblock %}
     </body>
