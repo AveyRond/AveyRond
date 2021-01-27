@@ -103,6 +103,41 @@ class AveyrondController extends AbstractController
     }
 
     /**
+     * @Route("/R1pouleC", name="R1pouleC")
+     */
+    public function R1pouleC(): Response
+    {
+        $html = file_get_contents('https://occitanie.fff.fr/competitions/?id=374080&poule=3&phase=1&type=ch&tab=ranking');
+
+        $crawler = new Crawler($html);
+
+        $tableth = $crawler->filter('table')->filter('th')->each(function ($th, $i) {
+            return $th->text();
+        });
+
+        $table = $crawler->filter('table')->filter('tr')->each(function ($tr, $i) {
+            return $tr->filter('td')->each(function ($td, $i) {
+                return trim($td->text());
+            });
+        });
+
+        $html_resultat = file_get_contents('https://occitanie.fff.fr/competitions/?id=374080&poule=3&phase=1&type=ch&tab=resultat');
+
+        $crawler_resultat = new Crawler($html_resultat);
+
+        $div_resultat = $crawler_resultat->filter('div.result-option')->each(function ($node, $i) {
+            return $node->html();
+        });
+
+        return $this->render('aveyrond/R1pouleC.html.twig', [
+            'controller_name' => 'AveyrondController',
+            'tables' => $table,
+            'tablesth' => $tableth,
+            'div' => $div_resultat
+        ]);
+    }
+
+    /**
      * @Route("/R2pouleC", name="R2pouleC")
      */
     public function R2pouleC(): Response
@@ -121,10 +156,124 @@ class AveyrondController extends AbstractController
             });
         });
 
+        $html_resultat = file_get_contents('https://occitanie.fff.fr/competitions/?id=374081&poule=3&phase=1&type=ch&tab=resultat');
+
+        $crawler_resultat = new Crawler($html_resultat);
+
+        $div_resultat = $crawler_resultat->filter('div.result-option')->each(function ($node, $i) {
+            return $node->html();
+        });
+
         return $this->render('aveyrond/R2pouleC.html.twig', [
             'controller_name' => 'AveyrondController',
             'tables' => $table,
-            'tablesth' => $tableth
+            'tablesth' => $tableth,
+            'div' => $div_resultat
+        ]);
+    }
+
+    /**
+     * @Route("/R3pouleF", name="R3pouleF")
+     */
+    public function R3pouleF(): Response
+    {
+        $html = file_get_contents('https://occitanie.fff.fr/competitions/?id=374082&poule=6&phase=1&type=ch&tab=ranking');
+
+        $crawler = new Crawler($html);
+
+        $tableth = $crawler->filter('table')->filter('th')->each(function ($th, $i) {
+            return $th->text();
+        });
+
+        $table = $crawler->filter('table')->filter('tr')->each(function ($tr, $i) {
+            return $tr->filter('td')->each(function ($td, $i) {
+                return trim($td->text());
+            });
+        });
+
+        $html_resultat = file_get_contents('https://occitanie.fff.fr/competitions/?id=374082&poule=6&phase=1&type=ch&tab=resultat');
+
+        $crawler_resultat = new Crawler($html_resultat);
+
+        $div_resultat = $crawler_resultat->filter('div.result-option')->each(function ($node, $i) {
+            return $node->html();
+        });
+
+        return $this->render('aveyrond/R3pouleF.html.twig', [
+            'controller_name' => 'AveyrondController',
+            'tables' => $table,
+            'tablesth' => $tableth,
+            'div' => $div_resultat
+        ]);
+    }
+
+    /**
+     * @Route("/R3pouleG", name="R3pouleG")
+     */
+    public function R3pouleG(): Response
+    {
+        $html = file_get_contents('https://occitanie.fff.fr/competitions/?id=374082&poule=7&phase=1&type=ch&tab=ranking');
+
+        $crawler = new Crawler($html);
+
+        $tableth = $crawler->filter('table')->filter('th')->each(function ($th, $i) {
+            return $th->text();
+        });
+
+        $table = $crawler->filter('table')->filter('tr')->each(function ($tr, $i) {
+            return $tr->filter('td')->each(function ($td, $i) {
+                return trim($td->text());
+            });
+        });
+
+        $html_resultat = file_get_contents('https://occitanie.fff.fr/competitions/?id=374082&poule=7&phase=1&type=ch&tab=resultat');
+
+        $crawler_resultat = new Crawler($html_resultat);
+
+        $div_resultat = $crawler_resultat->filter('div.result-option')->each(function ($node, $i) {
+            return $node->html();
+        });
+
+        return $this->render('aveyrond/R3pouleG.html.twig', [
+            'controller_name' => 'AveyrondController',
+            'tables' => $table,
+            'tablesth' => $tableth,
+            'div' => $div_resultat
+        ]);
+    }
+
+    /**
+     * @Route("/R3pouleH", name="R3pouleH")
+     */
+    public function R3pouleH(): Response
+    {
+        $html = file_get_contents('https://occitanie.fff.fr/competitions/?id=374082&poule=8&phase=1&type=ch&tab=ranking');
+
+        $crawler = new Crawler($html);
+
+        $tableth = $crawler->filter('table')->filter('th')->each(function ($th, $i) {
+            return $th->text();
+        });
+
+        $table = $crawler->filter('table')->filter('tr')->each(function ($tr, $i) {
+            return $tr->filter('td')->each(function ($td, $i) {
+                return trim($td->text());
+            });
+        });
+
+        $html_resultat = file_get_contents('https://occitanie.fff.fr/competitions/?id=374082&poule=8&phase=1&type=ch&tab=resultat');
+
+        $crawler_resultat = new Crawler($html_resultat);
+
+        $div_resultat = $crawler_resultat->filter('div.result-option')->each(function ($node, $i) {
+            return $node->html();
+        });
+
+        return $this->render('aveyrond/R3pouleH.html.twig', [
+            'controller_name' => 'AveyrondController',
+            'tables' => $table,
+            'tablesth' => $tableth,
+            'div' => $div_resultat
         ]);
     }
 
@@ -156,6 +305,41 @@ class AveyrondController extends AbstractController
         });
 
         return $this->render('aveyrond/DistrictD1.html.twig', [
+            'controller_name' => 'AveyrondController',
+            'tables' => $table,
+            'tablesth' => $tableth,
+            'div' => $div_resultat
+        ]);
+    }
+
+    /**
+     * @Route("/DistrictD2", name="DistrictD2")
+     */
+    public function DistrictD2(): Response
+    {
+        $html = file_get_contents('https://aveyron.fff.fr/competitions/?id=375138&poule=1&phase=1&type=ch&tab=ranking');
+
+        $crawler = new Crawler($html);
+
+        $tableth = $crawler->filter('table')->filter('th')->each(function ($th, $i) {
+            return $th->text();
+        });
+
+        $table = $crawler->filter('table')->filter('tr')->each(function ($tr, $i) {
+            return $tr->filter('td')->each(function ($td, $i) {
+                return trim($td->text());
+            });
+        });
+
+        $html_resultat = file_get_contents('https://aveyron.fff.fr/competitions/?id=375138&poule=1&phase=1&type=ch&tab=resultat');
+
+        $crawler_resultat = new Crawler($html_resultat);
+
+        $div_resultat = $crawler_resultat->filter('div.result-option')->each(function ($node, $i) {
+            return $node->html();
+        });
+
+        return $this->render('aveyrond/DistrictD2.html.twig', [
             'controller_name' => 'AveyrondController',
             'tables' => $table,
             'tablesth' => $tableth,

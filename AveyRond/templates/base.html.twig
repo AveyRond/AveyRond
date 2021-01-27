@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('images/Sans titre2.png') }}">
         <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
@@ -46,8 +47,14 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Compétitions</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{ path('R2pouleC') }}">Ligue - R2 Poule C</a>
-                            <a class="dropdown-item" href="{{ path('DistrictD1') }}">District - D1</a>
+                            <a class="dropdown-item" href="{{ path('R1pouleC') }}">Régionale 1 - Poule C <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/525743.jpg"></a>
+                            <a class="dropdown-item" href="{{ path('R2pouleC') }}">Régionale 2 - Poule C <img src="https://android-apiapp.azureedge.net//common/bib_img/logo/531494.jpg"> <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/582635.jpg"> <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/544843.jpg"> <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/505909.jpg"></a>
+                            <a class="dropdown-item" href="{{ path('R3pouleF') }}">Régionale 3 - Poule F <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/550055.jpg"> <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/525743.jpg"> <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/549427.jpg"></a>
+                            <a class="dropdown-item" href="{{ path('R3pouleG') }}">Régionale 3 - Poule G <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/554415.jpg"> <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/541255.jpg"> <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/506080.jpg"> <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/506103.jpg"> <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/524819.jpg"> <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/503171.jpg"></a>
+                            <a class="dropdown-item" href="{{ path('R3pouleH') }}">Régionale 3 - Poule H <img src="https://android-apiapp.azureedge.net//common/bib_img/logo/552063.jpg"> <img src="https://android-apiapp.azureedge.net//common/bib_img/logo/524089.jpg"> <img src="https://android-apiapp.azureedge.net//common/bib_img/logo/544843.jpg"></a>
+                            <a class="dropdown-item" href="{{ path('DistrictD1') }}">District D1</a>
+                            <a class="dropdown-item" href="{{ path('DistrictD2') }}">District D2</a>
+                            <a class="dropdown-item" href="">District D3 - Poule A... (à venir)</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -82,17 +89,26 @@
                             <h6>Liens utiles</h6>
                             <ul class="footer-links">
                                 <li><span onmouseover="a_propos()">À propos de nous</span></li>
-                                <li><span>Nous contacter</span></li>
-                                <li><span>Liens utiles</span></li>
+                                <li><span onmouseover="formulaire()">Nous contacter</span></li>
+                                <li><span onmouseover="liens()">Sources d'informations</span></li>
                                 <li><span onmouseover="mention_legales()">Mentions légales</span></li>
                                 <li><span>Plan du site</span></li>
                             </ul>
                         </div>
                         <div class="liens_utiles" id="propos">
-                            <p>Développer par Damien & David</p>
+                            <p>Ce site a été réalisé dans le cadre d'un projet personnel lors d'une formation de Développeur Web à l'AFPA de Rodez.
+                            Le framework Symfony est utilisé.</p>
+                        </div>
+                        <div class="liens_utiles" id="formulaire">
+                            <p>Formulaire de contact - à venir</p>
+                        </div>
+                        <div class="liens_utiles" id="liens">
+                            <p>Site du District Aveyron Football : <a href="https://aveyron.fff.fr/">https://aveyron.fff.fr/</a></p>
+                            <p>Site de la Ligue de Football d'Occitanie : <a href="https://occitanie.fff.fr/">https://occitanie.fff.fr/</a></p>
+                            <p>Site du journal local Centre Presse : <a href="https://www.centrepresseaveyron.fr/">https://centrepresseaveyron.fr/</a></p>
                         </div>
                         <div class="liens_utiles" id="mentions">
-                            <p>Nous nous sommes servis du site <a href="https://aveyron.fff.fr/">Aveyron FFF</a> pour récupérer le classement actuel de la région Aveyrond.</p>
+                            <p>À venir</p>
                         </div>
                     </div>
                     <hr>

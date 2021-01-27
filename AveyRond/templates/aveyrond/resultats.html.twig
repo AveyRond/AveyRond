@@ -14,12 +14,12 @@
 <main>
 {% for articlesResult in articlesResult %}
     <article>
-        <img src={{ articlesResult.image }}>
+        <img src={{ articlesResult.image }} onclick=location.href="{{ path('show_article', {'id': articlesResult.id}) }}">
         <div>
-            <h1>{{ articlesResult.title }}</h1>
-            <p class="content">{{ articlesResult.content | striptags | u.truncate(80, '...', false) | raw }}</p>
+            <h1 onclick=location.href="{{ path('show_article', {'id': articlesResult.id}) }}">{{ articlesResult.title }}</h1>
+            <p class="content" onclick=location.href="{{ path('show_article', {'id': articlesResult.id}) }}">{{ articlesResult.content | striptags | u.truncate(80, '...', false) | raw }}</p>
             {# <div>Ecrit le {{ articlesResult.createdAt | date('d/m/Y') }} par <span>{{ articlesResult.author }}</span> dans la catégorie {{ articlesResult.category.categoryType }}</div> #}
-            <a href="{{ path('show_article', {'id': articlesResult.id}) }}" class="btn btn-outline-primary">Lire la suite</a>
+            {# <a href="{{ path('show_article', {'id': articlesResult.id}) }}" class="btn btn-outline-primary">Lire la suite</a> #}
             <hr>
         </div>
     </article>

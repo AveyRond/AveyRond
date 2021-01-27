@@ -12,12 +12,12 @@
 <main>
 {% for articlesInter in articlesInter %}
     <article>
-        <img src={{ articlesInter.image }}>
+        <img src={{ articlesInter.image }} onclick=location.href="{{ path('show_article', {'id': articlesInter.id}) }}">
         <div>
-            <h1>{{ articlesInter.title }}</h1>
+            <h1 onclick=location.href="{{ path('show_article', {'id': articlesInter.id}) }}">{{ articlesInter.title }}</h1>
             <p class="content">{{ articlesInter.content | striptags | u.truncate(80, '...', false) | raw }}</p>
             {# <div>Ecrit le {{ articlesInter.createdAt | date('d/m/Y') }} par <span>{{ articlesInter.author }}</span> dans la catégorie {{ articlesInter.category.categoryType }}</div> #}
-            <a href="{{ path('show_article', {'id': articlesInter.id}) }}" class="btn btn-outline-primary">Lire la suite</a>
+            {# <a href="{{ path('show_article', {'id': articlesInter.id}) }}" class="btn btn-outline-primary">Lire la suite</a> #}
             <hr>
         </div>
     </article>

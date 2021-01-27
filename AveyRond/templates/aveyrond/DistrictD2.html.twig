@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ligue-R2 Poule C{% endblock %}
+{% block title %}District-D2{% endblock %}
 
 {% block body %}
 
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ path('accueil') }}">Accueil</a></li>
-    <li class="breadcrumb-item active">Ligue-R2 Poule C</li>
+    <li class="breadcrumb-item active">District-D2</li>
 </ol>
 <main>
-    <h1><center>Classement Regionale 2 - Poule C</center></h1>
+    <h1><center>Classement D2 Seniors</center></h1>
     <div class="table-responsive">
-        <table class="table table-bordered" id="classR1">
+        <table class="table" id="classD1">
             <thead class="thead-dark">
                 {% for tableth in tablesth %}
                         <th scope="col">{{ tableth }}</th>
@@ -27,12 +27,11 @@
             {% endfor %}
             </tbody>
         </table>
-        {# <div>Les descentes sont actualisées en fonction des descentes de Régionale 3.</div><br><br> #}
     </div>
     <h1><center>Résultats Dernière Journée</center></h1>
     <div id="resultat">
         {% for value in div %}
-            <div>{{ value|replace({'data-src':'src'})|replace({'href="':'target="_blank" href="https://https://occitanie.fff.fr/'})|replace({'<div class="date_tour">':'<span class="date_tour">'})|raw }}</div>
+            <div>{{ value|replace({'data-src':'src'})|replace({'href="':'target="_blank" href="https://aveyron.fff.fr'})|replace({'<div class="date_tour">':'<span class="date_tour">'})|raw }}</div>
         {% endfor %}
     </div>
 </main>

@@ -9,24 +9,27 @@
     <li class="breadcrumb-item active">District-D1</li>
 </ol>
 <main>
-    <h1>Classement D1 Seniors</h1>
-    <table class="table table-responsive">
-        <thead class="thead-dark">
-            {% for tableth in tablesth %}
-                    <th scope="col">{{ tableth }}</th>
-            {% endfor %}
-        </thead>
-        <tbody>
-        {% for table in tables %}
-            <tr>
-                {% for value in table %}
-                    <td>{{ value }}</td>
+    <h1><center>Classement D1 Seniors</center></h1>
+    <div class="table-responsive">
+        <table class="table table-bordered" id="classD1">
+            <thead class="thead-dark">
+                {% for tableth in tablesth %}
+                        <th scope="col">{{ tableth }}</th>
                 {% endfor %}
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <h1>Résultats Matchs</h1>
+            </thead>
+            <tbody>
+            {% for table in tables %}
+                <tr>
+                    {% for value in table %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div>Les descentes sont actualisées en fonction des descentes de Régionale 3.</div><br><br>
+    </div>
+    <h1><center>Résultats Dernière Journée</center></h1>
     <div id="resultat">
         {% for value in div %}
             <div>{{ value|replace({'data-src':'src'})|replace({'href="':'target="_blank" href="https://aveyron.fff.fr'})|replace({'<div class="date_tour">':'<span class="date_tour">'})|raw }}</div>

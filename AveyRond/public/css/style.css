@@ -1,5 +1,11 @@
-.navbar-nav {
-  align-items: center;
+/* .mr-auto, .mx-auto {
+  margin-right: 0!important;
+} */
+.navbar-collapse {
+  margin-left:10%;
+}
+.dropdown-item > img {
+  height:25px;
 }
 #form > div {
   margin-top: 2%;
@@ -25,11 +31,11 @@ table {
   text-align: center;
 }
 .table {
-  margin-bottom: 15%;
+  margin-bottom: 1%;
 }
 article {
   display: grid;
-  grid-template-columns: 35% 65%;
+  grid-template-columns: 25% 75%;
   margin: 2% 0 5% 0;
   align-items: center;
   border: 2px solid transparent;
@@ -40,7 +46,8 @@ article:hover {
 }
 article > img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  cursor: pointer;
 }
 article > div:nth-of-type(1) {
   margin-left: 5%;
@@ -50,10 +57,11 @@ article > div > h1 {
   white-space: initial;
   margin-top: 1%;
   text-transform: none;
+  cursor: pointer;
 }
-article > div > a {
-  margin-top: 2%;
-}
+/* article > div > a {
+  margin-bottom: 1%;
+} */
 article > div > div > span {
   color: red;
 }
@@ -210,7 +218,7 @@ article > div > div > span {
   border-bottom: 1px solid;
   border-color: #f2f2f2;
   padding-bottom: 1%;
-  font-size: 12pt;
+  font-size: 15pt;
 }
 .text-center {
   margin-bottom: 5%;
@@ -234,6 +242,7 @@ article > div > div > span {
   text-align: center;
   margin-bottom: 1%;
   font-size: 16pt;
+  display:none;
 }
 .detail {
   display: grid;
@@ -254,14 +263,18 @@ article > div > div > span {
 .logo > img {
   height: initial;
 }
-.equipe1 > div:nth-of-type(even) {
+/* .equipe1 > div:nth-of-type(even) {
   text-align: left;
 }
 .equipe2 > div:nth-of-type(odd) {
   text-align: right;
+} */
+#resultat {
+  margin: initial;
+  margin: 0 5% 0 5%;
 }
 .score_match {
-  font-size: 26pt;
+  font-size: 20pt;
   font-weight: bold;
 }
 .equipe2 {
@@ -274,18 +287,36 @@ article > div > div > span {
 }
 
 /* Tableau */
-table > tbody > tr:nth-of-type(2) {
+#classD1 > tbody > tr:nth-of-type(2) {
   background-color: #4bbf73;
   color: white;
 }
-table > tbody > tr:nth-last-child(2) {
+#classD1 > tbody > tr:nth-of-type(3) {
+  background-color: #4bbf73;
+  color: white;
+}
+#classD1 > tbody > tr:nth-last-child(-n+3) {
   background-color: #d9534f;
   color: white;
 }
-table > tbody > tr:last-child {
+#classD1 > tbody > tr {
+  color: black;
+}
+#classR1 > tbody > tr:nth-of-type(2) {
+  background-color: #4bbf73;
+  color: white;
+}
+#classR1 > tbody > tr:nth-last-child(-n+2) {
   background-color: #d9534f;
   color: white;
 }
+#classR1 > tbody > tr {
+  color: black;
+}
+/* #classD1 > tbody > tr:last-child {
+  background-color: #d9534f;
+  color: white;
+} */
 
 /* Footer */
 .foot {

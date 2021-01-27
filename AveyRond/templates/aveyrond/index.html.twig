@@ -32,14 +32,15 @@
 
         {% for article in articles %}
             <article id="index">
-                <img src={{ article.image }}>
+                <img src={{ article.image }} onclick=location.href="{{ path('show_article', {'id': article.id}) }}">
                 <div>
                     <span class="badge badge-dark">{{ article.category.categoryType }}</span>
-                    <h1>{{ article.title }}</h1>
+                    <h1 onclick=location.href="{{ path('show_article', {'id': article.id}) }}">{{ article.title }}</h1>
                     {# <p class="content">{{ article.content | striptags | u.truncate(80, '...', false) | raw }}</p> #}
-                    <a href="{{ path('show_article', {'id': article.id}) }}" class="btn btn-outline-primary">Lire la suite</a>
+                    {# <a href="{{ path('show_article', {'id': article.id}) }}" class="btn btn-outline-primary">Lire la suite</a> #}
                     <hr>
                 </div>
+                {# <div></div> #}
             </article> 
         {% endfor %}
         {{ knp_pagination_render(articles) }}

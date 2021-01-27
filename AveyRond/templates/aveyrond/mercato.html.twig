@@ -14,12 +14,12 @@
 <main>
 {% for articlesMerca in articlesMerca %}
     <article>
-        <img src={{ articlesMerca.image }}>
+        <img src={{ articlesMerca.image }} onclick=location.href="{{ path('show_article', {'id': articlesMerca.id}) }}">
         <div>
-            <h1>{{ articlesMerca.title }}</h1>
-            <p class="content">{{ articlesMerca.content | striptags | u.truncate(80, '...', false) | raw }}</p>
+            <h1 onclick=location.href="{{ path('show_article', {'id': articlesMerca.id}) }}">{{ articlesMerca.title }}</h1>
+            <p class="content" onclick=location.href="{{ path('show_article', {'id': articlesMerca.id}) }}">{{ articlesMerca.content | striptags | u.truncate(80, '...', false) | raw }}</p>
             {# <div>Ecrit le {{ articlesMerca.createdAt | date('d/m/Y') }} par <span>{{ articlesMerca.author }}</span> dans la catégorie {{ articlesMerca.category.categoryType }}</div> #}
-            <a href="{{ path('show_article', {'id': articlesMerca.id}) }}" class="btn btn-outline-primary">Lire la suite</a>
+            {# <a href="{{ path('show_article', {'id': articlesMerca.id}) }}" class="btn btn-outline-primary">Lire la suite</a> #}
             <hr>
         </div>
     </article>
