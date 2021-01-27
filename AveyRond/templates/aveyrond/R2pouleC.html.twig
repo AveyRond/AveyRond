@@ -21,7 +21,7 @@
             {% for table in tables %}
                 <tr>
                     {% for value in table %}
-                        <td>{{ value }}</td>
+                        <td>{{ value|replace({'RODEZ AVEYRON 3':'RODEZ AVEYRON 3 <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/505909.jpg" style="height:25px; width:auto;">'})|replace({'DRUELLE F.C.':'DRUELLE F.C. <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/531494.jpg" style="height:25px; width:auto;">'})|replace({'F.C. SOURCES DE L AV':'F.C. SOURCES DE L AV <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/582635.jpg" style="height:25px; width:auto;">'})|replace({'LUC PRIMAUBE F.C.':'LUC PRIMAUBE F.C. <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/544843.jpg" style="height:25px; width:auto;">'})|raw }}</td>
                     {% endfor %}
                 </tr>
             {% endfor %}
@@ -32,7 +32,7 @@
     <h1><center>Résultats Dernière Journée</center></h1>
     <div id="resultat">
         {% for value in div %}
-            <div>{{ value|replace({'data-src':'src'})|replace({'href="':'target="_blank" href="https://https://occitanie.fff.fr/'})|replace({'<div class="date_tour">':'<span class="date_tour">'})|raw }}</div>
+            <div>{{ value|replace({'data-src':'src'})|replace({'href="':'target="_blank" href="https://occitanie.fff.fr/'})|replace({'<div class="date_tour">':'<span class="date_tour">'})|raw }}</div>
         {% endfor %}
     </div>
 </main>

@@ -1,8 +1,8 @@
 /* .mr-auto, .mx-auto {
   margin-right: 0!important;
 } */
-.navbar-collapse {
-  margin-left:10%;
+.navbar-nav {
+  align-items: center;
 }
 .dropdown-item > img {
   height:25px;

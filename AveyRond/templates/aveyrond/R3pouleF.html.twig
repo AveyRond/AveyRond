@@ -21,7 +21,7 @@
             {% for table in tables %}
                 <tr>
                     {% for value in table %}
-                        <td>{{ value }}</td>
+                        <td>{{ value|replace({'J.S BASSIN AVEYRON':'J.S BASSIN AVEYRON <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/550055.jpg" style="height:25px; width:auto;">'})|replace({'ONET LE CHAT. FOOT 2':'ONET LE CHAT. FOOT 2 <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/525743.jpg" style="height:25px; width:auto;">'})|replace({'SEGALA RIEUPEYROUX':'SEGALA RIEUPEYROUX <img src="https://android-apiapp.azureedge.net/common/bib_img/logo/549427.jpg" style="height:25px; width:auto;">'})|raw }}</td>
                     {% endfor %}
                 </tr>
             {% endfor %}
@@ -32,7 +32,7 @@
     <h1><center>Résultats Dernière Journée</center></h1>
     <div id="resultat">
         {% for value in div %}
-            <div>{{ value|replace({'data-src':'src'})|replace({'href="':'target="_blank" href="https://https://occitanie.fff.fr/'})|replace({'<div class="date_tour">':'<span class="date_tour">'})|raw }}</div>
+            <div>{{ value|replace({'data-src':'src'})|replace({'href="':'target="_blank" href="https://occitanie.fff.fr/'})|replace({'<div class="date_tour">':'<span class="date_tour">'})|raw }}</div>
         {% endfor %}
     </div>
 </main>
