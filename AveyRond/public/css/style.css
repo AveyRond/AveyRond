@@ -5,7 +5,7 @@
   align-items: center;
 }
 .dropdown-item > img {
-  height:25px;
+  height: 25px;
 }
 #form > div {
   margin-top: 2%;
@@ -159,6 +159,12 @@ article > div > div > span {
 #show > img {
   margin-bottom: 1%;
 }
+#show > p > strong > a {
+  color: red;
+}
+#show > p > a {
+  color: red;
+}
 .badge_show {
   padding: 1% 1.5% 1% 1.5%;
   text-transform: uppercase;
@@ -242,7 +248,7 @@ article > div > div > span {
   text-align: center;
   margin-bottom: 1%;
   font-size: 16pt;
-  display:none;
+  display: none;
 }
 .detail {
   display: grid;
@@ -295,7 +301,7 @@ article > div > div > span {
   background-color: #4bbf73;
   color: white;
 }
-#classD1 > tbody > tr:nth-last-child(-n+3) {
+#classD1 > tbody > tr:nth-last-child(-n + 3) {
   background-color: #d9534f;
   color: white;
 }
@@ -306,7 +312,7 @@ article > div > div > span {
   background-color: #4bbf73;
   color: white;
 }
-#classR1 > tbody > tr:nth-last-child(-n+2) {
+#classR1 > tbody > tr:nth-last-child(-n + 2) {
   background-color: #d9534f;
   color: white;
 }
